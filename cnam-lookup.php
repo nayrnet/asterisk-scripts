@@ -3,12 +3,12 @@
 // cnam-lookup.agi <phone number> <username>
 // By: Ryan Hunt <admin@nayr.net>
 // License: CC-BY-SA
-// Useage: s,1,AGI(cnam-lookup.php,${CALLERID(num)},ryan)
+// Useage: s,1,AGI(cnam-lookup.php,${CALLERID(num)},firstdb)
 
 
 // Variables
 
-$users = array(0 => 'ryan', 1=> 'cassidi', 2=> 'opencnam');	// Array of tables to look in
+$users = array(0 => 'user1', 1=> 'user2', 2=> 'opencnam');	// Array of tables to look in
 //$users = array(0=> 'opencnam');	// For testing OpenCNAM
 
 $db = 'asterisk';
@@ -104,7 +104,6 @@ function OpenCNAM($ph) {
 	global $dbhost,$dbuser,$dbpass,$db,$opencnamSID,$opencnamTOKEN;
 	$query = "https://api.opencnam.com/v2/phone/".$ph."?format=pbx";
 	if(isset($opencnamSID)) { $query = "https://".$opencnamSID.":".$opencnamTOKEN."@api.opencnam.com/v2/phone/".$ph."?format=pbx"; }
-	echo $query."\r\n";
 	$ch = curl_init();
 	curl_setopt ($ch, CURLOPT_URL, $query);
 	curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
