@@ -1,19 +1,19 @@
 #!/usr/bin/php -q
 <?php
-// gvoicemail-mil.php
+// gvoicemail-mwi.php
 // By: Ryan Hunt <admin@nayr.net>
 // Description: This script checks google voice and creates
-// the aproprate files to trigger message indicator.
-// run it in a cronjob every 5mins
+// the aproprate files to trigger message waiting indicator.
+// run it in a cronjob every 5min, enable pollmailboxes=yes
 
 // Login Credentials, multi-user support.
 $user = array("0" => "user1@gmail.com", "1" => "user2@gmail.com");
 $pass = array("0" => "cGFzc3dvcmQ=", "1" => "cGFzc3dvcmQ="); // base64 encoded
-$mailbox = array("0" => "1860", "1" => "1861"); // base64 encoded
-$mailpath = "/opt/asterisk/var/spool/asterisk/voicemail/default/";
+$mailbox = array("0" => "1860", "1" => "1861");
+$mailpath = "/var/spool/asterisk/voicemail/default/";
 
 ob_implicit_flush(false);
-set_time_limit(10);
+set_time_limit(12);
 error_reporting(0);
 $arg = $argv[1]; // pass array id via first argument
 
